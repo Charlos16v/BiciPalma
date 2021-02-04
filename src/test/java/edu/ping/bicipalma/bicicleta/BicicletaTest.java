@@ -1,4 +1,4 @@
-package edu.ping.bicipalma;
+package edu.ping.bicipalma.bicicleta;
 
 import edu.ping.bicipalma.domain.bicicleta.Bicicleta;
 import org.junit.Before;

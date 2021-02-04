@@ -3,6 +3,11 @@
 *.iml
 *.iws
 
+#VSCODE
+.settings/
+.classpath
+.project
+
 # Mac
 .DS_Store
 

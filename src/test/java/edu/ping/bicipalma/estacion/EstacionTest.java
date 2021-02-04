@@ -1,4 +1,4 @@
-package edu.ping.bicipalma;
+package edu.ping.bicipalma.estacion;
 
 import edu.ping.bicipalma.domain.estacion.Estacion;
 import org.junit.Before;
@@ -35,7 +35,7 @@ public class EstacionTest {
 
     @Test
     public void getNumAnclajesTest() {
-        assertEquals(10, this.estacion.getAnclajes());
+        assertEquals(10, this.estacion.numAnclajes());
     }
 
 }

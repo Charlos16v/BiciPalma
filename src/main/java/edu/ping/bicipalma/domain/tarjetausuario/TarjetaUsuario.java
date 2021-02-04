@@ -1,4 +1,4 @@
 package edu.ping.bicipalma.domain.tarjetausuario;
 
-public class TarjetaUsuario {
+public class TarjetaUsuario implements Autenticacion {
 }
