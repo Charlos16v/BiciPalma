@@ -1,6 +1,5 @@
-package edu.ping.bicipalma.bicicleta;
+package edu.ping.bicipalma.domain.bicicleta;
 
-import edu.ping.bicipalma.domain.bicicleta.Bicicleta;
 import org.junit.Before;
 import org.junit.Test;
 
