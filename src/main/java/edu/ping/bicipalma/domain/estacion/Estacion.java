@@ -89,7 +89,7 @@ public class Estacion {
     //Metodo encargado de devolver la información del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de anclar
     private void mostrarAnclaje(Movil bicicleta, int numeroAnclaje) {
         System.out.println("bicicleta: " + bicicleta.getId() +
-        "anclada en el anclaje: " + numeroAnclaje);
+        " anclada en el anclaje: " + numeroAnclaje);
     }
 
     //Metodo encargado de devolver la informacion del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de retirar

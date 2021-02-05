@@ -20,7 +20,7 @@ public class Anclajes {
         }
     }
 
-    // anclajes() => getAnclajes()
+    // anclajes() => getAnclajes() getter
     Anclaje[] anclajes() {
         return this.anclajes;
     }
