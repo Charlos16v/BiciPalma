@@ -1,7 +1,10 @@
 package edu.ping.bicipalma.appalma;
 
 import edu.ping.bicipalma.domain.bicicleta.Bicicleta;
+import edu.ping.bicipalma.domain.bicicleta.Movil;
 import edu.ping.bicipalma.domain.estacion.Estacion;
+import edu.ping.bicipalma.domain.tarjetausuario.Autenticacion;
+import edu.ping.bicipalma.domain.tarjetausuario.TarjetaUsuario;
 
 public class BiciPalma {
 
@@ -51,6 +54,24 @@ public class BiciPalma {
 		System.out.println("\n **** caso TEST consultar bicicletas ancladas **** \n");
 
 		estacion.consultarAnclajes();
+
+        /**
+		 * Caso TEST retirar bicicleta
+		 */
+
+		System.out.println("\n **** caso TEST retirar bicicleta **** \n");
+
+		TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("000456789", true);
+
+		System.out.println("¿tarjeta de usuario activada? (true/false): "
+							+ estacion.leerTarjetaUsuario(tarjetaUsuario));
+
+		estacion.retirarBicicleta(tarjetaUsuario);
+
+		estacion.consultarAnclajes();
+
+		System.out.println("anclajesLibres: " + estacion.anclajesLibres());
+
 
 
     }

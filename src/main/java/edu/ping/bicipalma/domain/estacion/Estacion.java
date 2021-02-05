@@ -1,8 +1,7 @@
 package edu.ping.bicipalma.domain.estacion;
 
-import java.util.Arrays;
-
 import edu.ping.bicipalma.domain.bicicleta.Movil;
+import edu.ping.bicipalma.domain.tarjetausuario.Autenticacion;
 
 public class Estacion {
 
@@ -113,5 +112,12 @@ public class Estacion {
             numeroAnclaje++;
         }
     }
+
+	public void retirarBicicleta(Autenticacion tarjetaUsuario) {
+	}
+
+	public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
+        return tarjetaUsuario.isActivada();
+	}
 
 }

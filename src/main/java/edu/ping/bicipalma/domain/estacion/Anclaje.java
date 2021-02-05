@@ -12,6 +12,13 @@ public class Anclaje {
     public Anclaje() {
     }
 
+    //Constructor alternativo para poder testear los metodos siguientes(isOcupado,getBici,anclarBici)
+
+    public Anclaje(boolean ocupado, Movil bici) {
+        this.ocupado = ocupado;
+        this.bici = bici;
+    }
+
 
     //Getter del parametro booleano "ocupado"
     public boolean isOcupado() {
@@ -29,7 +36,7 @@ public class Anclaje {
         this.ocupado = true;
     }
 
-    //Metodo para anclar bici, al implementar la interfaz movil se la pasamos al metodo, ocupado queda en false
+    //Metodo para liberar la bici, al implementar la interfaz movil se la pasamos al metodo, ocupado queda en false
     void liberarBici(Movil bici) {
         this.bici = bici;
         this.ocupado = false;
