@@ -13,7 +13,7 @@ public class EstacionTest {
 
     @Before
     public void setup_estacion() {
-        this.estacion = new Estacion(69,"Aragón",10);
+        this.estacion = new Estacion(69, "Aragón", 10);
         assertNotNull(estacion);
     }
 
@@ -24,7 +24,7 @@ public class EstacionTest {
 
     @Test
     public void getIdTest() {
-        assertEquals(69,this.estacion.getId());
+        assertEquals(69, this.estacion.getId());
     }
 
     @Test

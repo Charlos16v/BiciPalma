@@ -88,7 +88,7 @@ public class Estacion {
     //Metodo encargado de devolver la información del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de anclar
     private void mostrarAnclaje(Movil bicicleta, int numeroAnclaje) {
         System.out.println("bicicleta: " + bicicleta.getId() +
-        " anclada en el anclaje: " + numeroAnclaje);
+                " anclada en el anclaje: " + numeroAnclaje);
     }
 
     //Metodo encargado de devolver la informacion del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de retirar
@@ -113,11 +113,26 @@ public class Estacion {
         }
     }
 
-	public void retirarBicicleta(Autenticacion tarjetaUsuario) {
-	}
+    //Metodo encargado de localizar una posicion de anclaje ocupada para retirar una bicicleta
+    public void retirarBicicleta(Autenticacion tarjetaUsuario) {
+        if (leerTarjetaUsuario((tarjetaUsuario))) {
+            boolean biciRetirada = false;   //booleano para
+            while (!biciRetirada) {
+                int posicion = anclajes.seleccionarAnclaje();
+                int numeroAnclaje = posicion + 1;
+                if (anclajes.isAnclajeOcupado(posicion)) {
+                    mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
+                    anclajes.liberarAnclaje(posicion);
+                    biciRetirada = true;
+                }
+            }
+        } else {
+            System.out.println("\n" + "Tarjeta de usuario inactiva no puedes retirar una bicicleta" + "\n"); //Contemplacion para el caso de no tener la tarjeta activa.(activada == false)
+        }
+    }
 
-	public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
+    public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
-	}
+    }
 
 }

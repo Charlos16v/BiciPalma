@@ -37,8 +37,8 @@ public class Anclaje {
     }
 
     //Metodo para liberar la bici, al implementar la interfaz movil se la pasamos al metodo, ocupado queda en false
-    void liberarBici(Movil bici) {
-        this.bici = bici;
+    void liberarBici() {
+        this.bici = null;
         this.ocupado = false;
     }
 
@@ -47,4 +47,5 @@ public class Anclaje {
     public String toString() {
         return "ocupada: " + isOcupado();
     }
+
 }

@@ -12,12 +12,12 @@ public class AnclajesTest {
 
     @Before
     public void setupAnclajes() {
-        this.anclajes = new Anclajes[10];
+        anclajes = new Anclajes[10];
         assertNotNull(anclajes);
     }
 
     @Test
-    public void constructorTest(){
+    public void constructorTest() {
         assertNotNull(anclajes);
     }
 
@@ -25,5 +25,6 @@ public class AnclajesTest {
     public void crearAnclajesTest() {
         assertEquals(10, anclajes.length);
     }
+
 }
 

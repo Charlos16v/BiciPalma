@@ -23,6 +23,6 @@ public class BicicletaTest {
 
     @Test
     public void getIdTest() {
-        assertEquals(1,this.bicicleta.getId());
+        assertEquals(1, this.bicicleta.getId());
     }
 }

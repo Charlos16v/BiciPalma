@@ -43,8 +43,7 @@ public class AnclajeTest {
 
     @Test
     public void liberarBici() {
-        Bicicleta bicicleta = new Bicicleta(2);
-        this.anclaje.liberarBici(bicicleta);
+        this.anclaje.liberarBici();
         assertFalse(this.anclaje.isOcupado());
     }
 }

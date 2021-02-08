@@ -2,7 +2,9 @@ package edu.ping.bicipalma.domain.estacion;
 
 import edu.ping.bicipalma.domain.bicicleta.Movil;
 
-public class Anclajes {
+import java.util.concurrent.ThreadLocalRandom;
+
+class Anclajes {
 
     //Inicializamos un array que contiene objeto "Anclaje"
     private final Anclaje[] anclajes;
@@ -33,5 +35,24 @@ public class Anclajes {
     //Metodo encargado de ocupar un Anclaje pasandole la posicion y la bici implementando la interfaz Movil
     void ocuparAnclaje(int posicion, Movil bici) {
         this.anclajes[posicion].anclarBici(bici);
+    }
+
+    //Metodo encargado de generar un numero aleatoria entre 0 y el numero total de Anclajes.
+    int seleccionarAnclaje() {
+        return ThreadLocalRandom.current().nextInt(0, numAnclajes());
+    }
+
+    //Metodo encargado de comprobar a partir de una posicion si el anclaje esta ocupado
+    boolean isAnclajeOcupado(int posicion) {
+        return this.anclajes[posicion].isOcupado();
+    }
+
+    //Metodo encargado de devolver el objeto bici en la posición indicada
+    Movil getBiciAt(int posicion) {
+        return this.anclajes[posicion].getBici();
+    }
+
+    void liberarAnclaje(int posicion) {
+        this.anclajes[posicion].liberarBici();
     }
 }
