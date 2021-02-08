@@ -20,6 +20,10 @@ public class TarjetaUsuario implements Autenticacion {
         this.activada = activada;
     }
 
+    public String getId() {
+        return this.id;
+    }
+
     @Override
     public String toString() {
         return this.id;

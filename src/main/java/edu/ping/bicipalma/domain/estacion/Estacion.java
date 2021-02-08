@@ -127,10 +127,11 @@ public class Estacion {
                 }
             }
         } else {
-            System.out.println("\n" + "Tarjeta de usuario inactiva no puedes retirar una bicicleta" + "\n"); //Contemplacion para el caso de no tener la tarjeta activa.(activada == false)
+            System.out.println("\n" + "Tarjeta de usuario inactiva no puedes retirar una bicicleta" + "\n" + "ID de tarjeta: " + tarjetaUsuario.toString() + "\n"); //Contemplacion para el caso de no tener la tarjeta activa.(activada == false)
         }
     }
 
+    //
     public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
     }
