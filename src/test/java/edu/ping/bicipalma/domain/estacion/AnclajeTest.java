@@ -46,5 +46,10 @@ public class AnclajeTest {
         this.anclaje.liberarBici();
         assertFalse(this.anclaje.isOcupado());
     }
+
+    @Test
+    public void toStringTest() {
+        assertEquals("ocupada: true", anclaje.toString());
+    }
 }
 

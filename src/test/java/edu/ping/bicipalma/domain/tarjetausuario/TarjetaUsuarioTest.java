@@ -3,8 +3,7 @@ package edu.ping.bicipalma.domain.tarjetausuario;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TarjetaUsuarioTest {
 
@@ -25,4 +24,21 @@ public class TarjetaUsuarioTest {
     public void isActivadaTest() {
         assertTrue(tarjetaUsuario.isActivada());
     }
+
+    @Test
+    public void setActivadaTest() {
+        tarjetaUsuario.setActivada(false);
+        assertFalse(tarjetaUsuario.isActivada());
+    }
+
+    @Test
+    public void getIdTest() {
+        assertEquals("1213454", tarjetaUsuario.getId());
+    }
+
+    @Test
+    public void toStringTest(){
+        assertEquals("1213454", tarjetaUsuario.toString());
+    }
+
 }

@@ -25,4 +25,9 @@ public class BicicletaTest {
     public void getIdTest() {
         assertEquals(1, this.bicicleta.getId());
     }
+
+    @Test
+    public void toStringTest() {
+        assertEquals("1", bicicleta.toString());
+    }
 }
