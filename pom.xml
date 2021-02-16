@@ -69,9 +69,20 @@
                     <version>2.22.1</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
+                    <version>2.4</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>edu.ping.bicipalma.appalma.BiciPalma</mainClass>
+                                <classpathPrefix>dependency-jars/</classpathPrefix>
+                            </manifest>
+                        </archive>
+                    </configuration>
                 </plugin>
+
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>2.5.2</version>
