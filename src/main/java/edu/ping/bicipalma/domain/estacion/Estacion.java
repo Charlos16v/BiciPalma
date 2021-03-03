@@ -3,6 +3,9 @@ package edu.ping.bicipalma.domain.estacion;
 import edu.ping.bicipalma.domain.bicicleta.Movil;
 import edu.ping.bicipalma.domain.tarjetausuario.Autenticacion;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public class Estacion {
 
     /*
@@ -61,7 +64,7 @@ public class Estacion {
 
         int anclajesLibres = 0;
         for (Anclaje anclaje : anclajes()) {
-            if (anclaje.isOcupado() == false) {
+            if (!anclaje.isOcupado()) {
                 anclajesLibres += 1;
             }
         }
@@ -71,18 +74,12 @@ public class Estacion {
     // Metodo encargado de recorrer el array de objetos Anclaje, comprobando y
     // indicando si estos estan libres o no, indicando la bici y su estado
     public void consultarAnclajes() {
-        int posicion = 0;
-        int numeroAnclaje = 0;
 
-        for (Anclaje anclaje : anclajes()) {
-            numeroAnclaje = posicion + 1; // Ya que los array empiezan en posicion 0, y el numero de anclaje en 1
-            if (anclaje.isOcupado()) {
-                System.out.println("Anclaje" + numeroAnclaje + " " + anclaje.getBici().getId()); // Si es true
-            } else {
-                System.out.println("Anclaje" + numeroAnclaje + " " + "libre"); // Si es false
-            }
-            posicion++;
-        }
+        Arrays.stream(anclajes())
+                .map(a -> Optional.ofNullable(a.getBici()))
+                .forEach(bici -> System.out.print("Anclaje " +
+                        (bici.isPresent()? bici.get(): "libre")
+                        + '\n'));
     }
 
     //Metodo encargado de devolver la información del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de anclar
@@ -92,42 +89,44 @@ public class Estacion {
     }
 
     //Metodo encargado de devolver la informacion del id de la bicicleta y el anclaje donde se encuentra anclada, en el momento de retirar
-    private void mostrarBicicleta(Movil bicicleta, int numeroAnclaje) {
-        System.out.println("bicicleta " + bicicleta.getId() + " retirada" + " del anclaje: " + numeroAnclaje);
+    private void mostrarBicicleta(Movil bicicleta/*, int numeroAnclaje*/) {
+        System.out.println("bicicleta: " + bicicleta.getId() + " retirada!" /*+ " del anclaje: " + numeroAnclaje*/);
     }
 
     //Metodo encargado de buscar anclajes libres, si es asi, anclar la bicicleta al anclaje libre
     public void anclarBicicleta(Movil bici) {
-        int posicion = 0;
-        int numeroAnclaje = posicion + 1;
 
-        for (Anclaje anclaje : anclajes()) {
-            if (!anclaje.isOcupado()) { //Si el anclaje is not ocupado entonces:
-                anclajes.ocuparAnclaje(posicion, bici); //Anclamos la bici
-                mostrarAnclaje(bici, numeroAnclaje); //Mostramos la info
-                break;
-            } else {
-                posicion++;
-            }
-            numeroAnclaje++;
+        Optional<Anclaje> anclajeLibre = Arrays.stream(anclajes())
+                .filter(a -> !a.isOcupado())
+                .findAny();
+
+        if (anclajeLibre.isPresent()) {
+            anclajeLibre.get()
+                    .anclarBici(bici);
+        } else {
+            System.out.println("No disponemos de anclajes libres para la bici: " + bici);
         }
     }
 
+
     //Metodo encargado de localizar una posicion de anclaje ocupada para retirar una bicicleta
     public void retirarBicicleta(Autenticacion tarjetaUsuario) {
-        if (leerTarjetaUsuario((tarjetaUsuario))) {
-            boolean biciRetirada = false;   //booleano para
-            while (!biciRetirada) {
-                int posicion = anclajes.seleccionarAnclaje();
-                int numeroAnclaje = posicion + 1;
-                if (anclajes.isAnclajeOcupado(posicion)) {
-                    mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
-                    anclajes.liberarAnclaje(posicion);
-                    biciRetirada = true;
-                }
+
+        if (leerTarjetaUsuario(tarjetaUsuario)) {
+
+            Optional<Anclaje> anclajeOcupado = Arrays.stream(anclajes()).filter(Anclaje::isOcupado).findAny();
+
+            if (anclajeOcupado.isPresent()) {
+
+                mostrarBicicleta(anclajeOcupado.get().getBici());
+                anclajeOcupado.get().liberarBici();
+
+            } else {
+                System.out.println("No hay bicis disponibles");
             }
+
         } else {
-            System.out.println("\n" + "Tarjeta de usuario inactiva no puedes retirar una bicicleta" + "\n" + "ID de tarjeta: " + tarjetaUsuario.toString() + "\n"); //Contemplacion para el caso de no tener la tarjeta activa.(activada == false)
+            System.out.println("Lo sentimos la tarjeta de usuario no esta activada");
         }
     }
 
