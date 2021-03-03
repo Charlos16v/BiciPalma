@@ -78,7 +78,7 @@ public class Estacion {
         Arrays.stream(anclajes())
                 .map(a -> Optional.ofNullable(a.getBici()))
                 .forEach(bici -> System.out.print("Anclaje " +
-                        (bici.isPresent()? bici.get(): "libre")
+                        (bici.isPresent() ? bici.get() : "libre")
                         + '\n'));
     }
 
