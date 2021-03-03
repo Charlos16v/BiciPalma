@@ -37,7 +37,7 @@ public class TarjetaUsuarioTest {
     }
 
     @Test
-    public void toStringTest(){
+    public void toStringTest() {
         assertEquals("1213454", tarjetaUsuario.toString());
     }
 
